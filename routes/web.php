@@ -1,15 +1,7 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('homePage');
-});
-
-Route::get('/create', function () {
-    return view('formularioPage');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboardPage');
-});
+Route::resource('tasks', TaskController::class);
+Route::post('/tasks/update-status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus');
